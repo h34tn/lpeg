@@ -29,7 +29,7 @@
 /*
 ** compatibility with Lua 5.2
 */
-#if (LUA_VERSION_NUM == 502)
+#if (LUA_VERSION_NUM >= 502)
 
 #undef lua_equal
 #define lua_equal(L,idx1,idx2)  lua_compare(L,(idx1),(idx2),LUA_OPEQ)
@@ -38,6 +38,8 @@
 #define lua_getfenv	lua_getuservalue
 #undef lua_setfenv
 #define lua_setfenv	lua_setuservalue
+#undef luaL_checkint
+#define luaL_checkint luaL_checkinteger
 
 #undef lua_objlen
 #define lua_objlen	lua_rawlen
